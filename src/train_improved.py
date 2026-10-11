@@ -1,8 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.neural_network import MLPClassifier
@@ -120,7 +122,9 @@ print("Training completed!")
 # 7. MAKE PREDICTIONS
 # ============================================
 
-y_pred = model.predict(X_test)
+
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+print("Traffic Prediction RMSE:", rmse)
 
 # ============================================
 # 8. CALCULATE ACCURACY
